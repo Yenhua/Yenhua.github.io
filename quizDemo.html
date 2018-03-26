@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<title>
+Input demo
+</title>
+
+<body>
+
+<form id="frm1">
+  What is 6+23? <input type="value" id="question"><br>
+</form> 
+
+<p></p>
+
+<button onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
+
+<script>
+var newQuestion = false;
+
+function myFunction() {
+	
+    var x = document.getElementById("question").value;
+	console.log(x);
+	if(newQuestion){
+		var xToString = x + "";
+		console.log(xToString);
+		if(xToString === "grass"){
+			document.getElementById("demo").innerHTML = "Interesting, you think animals should be grouped!";
+		}
+		else if (x==="cat"){
+			document.getElementById("demo").innerHTML = "Interesting, you think horse eats grass, so the cat is the odd one out.";
+		}
+		else if (x==="horse"){
+			document.getElementById("demo").innerHTML = "horse? really?";
+		}
+		else{
+			document.getElementById("demo").innerHTML = "Invalid input";
+		}
+	}
+	else{
+	if(x==29){
+		document.getElementById("demo").innerHTML = "You are correct!";
+	}
+	else if(x==-1){
+		document.getElementById("frm1").innerHTML = "Let's change the entire question! <br> Cat, Horse, Grass. Which one is the odd one out? <input type=value id=question><br>";
+		newQuestion = true;
+	}
+	else{
+		document.getElementById("demo").innerHTML = "Wrong! You inputted " + x;
+	}
+	}
+}
+</script>
+
+</body>
+</html>
