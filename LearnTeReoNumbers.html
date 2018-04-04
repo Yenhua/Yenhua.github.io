@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<title>
+Learn Te Reo Numbers!
+</title>
+
+<body>
+Match and submit the number shown.
+<form id="frm1">
+   <input type="number" id="num" min="1" max="10"><br>
+</form> 
+
+<p></p>
+
+<button onclick="inputFunction()">Submit</button>
+
+<p id="demo"></p>
+<p id="printSpace"></p>
+<body onload="initialise()"> </body>
+ 
+ 
+
+
+</body>
+
+</html>
+
+<script>
+//this problem will test scope
+var consoleText = "";
+var currentNumber = 0;
+var currentMaoriNumber = "";
+
+function initialise(){
+	updateNewQuestion();
+}
+
+
+//Question 3
+function inputFunction() {
+	var inputNum = document.getElementById("num").value;
+	
+	if(inputNum==currentNumber){
+		UIPrint("You are correct! :)");
+		updateNewQuestion();
+	}
+	else{
+		UIPrint("Oops, try again!");
+	}
+}
+
+function updateNewQuestion(){
+	currentNumber = Math.floor(Math.random() * 10) + 1;//generates a number between 1 and 10
+	switch(currentNumber){
+		case 1: 
+		currentMaoriNumber = "Tahi";
+		currentNumber = 1;
+		break;
+		case 2: 
+		currentMaoriNumber = "Rua";
+		currentNumber = 2;
+		break;
+		case 3: 
+		currentMaoriNumber = "Toru";
+		currentNumber = 3;
+		break;
+		case 4: 
+		currentMaoriNumber = "Wha";
+		currentNumber = 4;
+		break;
+		case 5: 
+		currentMaoriNumber = "Rima";
+		currentNumber = 5;
+		break;
+		case 6: 
+		currentMaoriNumber = "Ono";
+		currentNumber = 6;
+		break;
+		case 7: 
+		currentMaoriNumber = "Whitu";
+		currentNumber = 7;
+		break;
+		case 8: 
+		currentMaoriNumber = "Waru";
+		currentNumber = 8;
+		break;
+		case 9: 
+		currentMaoriNumber = "Iwa";
+		currentNumber = 9;
+		break;
+		case 10: 
+		currentMaoriNumber = "Tekau";
+		currentNumber = 10;
+		break;
+	}
+	UIPrint("What is the number for " + currentMaoriNumber + " ?");
+}
+
+
+//Prints a string, and only a string onto the webpage
+function UIPrint(text){
+	consoleText = consoleText + (text + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+</script>
