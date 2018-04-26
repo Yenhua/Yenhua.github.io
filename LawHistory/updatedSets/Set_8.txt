@@ -1,0 +1,7 @@
+Introducing bill @ 1
+First Reading @ 2
+Select Committee @ 3
+Second Reading @ 4
+Committee of the whole House @ 5
+Third Reading @ 6
+Assent by Sovereign @ 7

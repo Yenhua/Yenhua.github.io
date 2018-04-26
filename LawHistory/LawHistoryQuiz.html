@@ -1,0 +1,152 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+LawHistoryQuiz
+</title>
+<h1>
+Law History Quiz
+</h1>
+
+<body onload = "init()">
+For demo purposes the answers to Quiz 1 are: 1987,1941,1877,1847<br>
+</body>
+
+<button onclick="startQuiz1()">Begin Quiz Set 1</button>
+
+
+<form id="q1">
+<br>Input the year of the event that's shown </br
+><input type="value" id="userInput"><br>
+</form> 
+<button onclick="checkAnswer()">Submit</button>
+
+<p id="printSpace"></p>
+</html>
+<script>
+var consoleText = "";
+var rawFile;
+var tempText = "";
+//strings from loading text
+//1-5 is history/cases/events and the years
+var rawSet1 = "";
+var rawSet2;
+var rawSet3;
+var rawSet4;
+var rawSet5;
+//6-8 are processes in orders
+var rawSet6;
+var rawSet7;
+var rawSet8;
+
+var set1Questions = [];
+var currentSet = [];
+var currentQuestion = "";
+var currentAnswer = "";
+var currentPair;
+
+function setQuizObjects(){
+	//for each loop creating a new object per string per set
+	
+	
+	var set1Array = rawSet1.split("\n");
+	for (x in set1Array){
+		console.log(set1Array[x]);
+		var pairArray = set1Array[x].split("@");
+		pairArray[1] = pairArray[1].trim();
+		console.log(pairArray);
+
+		
+		var tempPair = new Object();
+		tempPair.question = "";
+		tempPair.answer = "";
+		
+		tempPair.question = pairArray[0];
+		tempPair.answer = pairArray[1];
+		
+		set1Questions.push(tempPair);
+	}
+}
+
+function startQuiz1(){
+	currentSet = JSON.parse(JSON.stringify(set1Questions));//makes a deep copy of a JSON array. Very important as that allows us to keep our original data structures intact
+	console.log(currentSet);
+	currentPair = currentSet.pop();
+	currentQuestion = currentPair.question;
+	currentAnswer = currentPair.answer;
+	UIPrint(currentQuestion);
+	console.log(currentQuestion);
+	console.log(currentAnswer);
+}
+
+function checkAnswer(){
+	//check if the year is currect, if so, mark it as correct and get the next question.
+	var inputNum = document.getElementById("userInput").value;
+	if(inputNum==currentAnswer){
+		console.log(inputNum);
+		console.log(currentAnswer);
+		UIPrint("You are correct!");
+		handleNextQuestion();
+	}else{
+	UIPrint("Sorry, Try again.");
+	
+	}
+
+}
+
+function handleNextQuestion(){
+	currentPair = currentSet.pop();
+	if(currentPair == null){
+		//No question left! Finish this quiz
+		UIPrint("Quiz complete :) Select a new quiz or try again.");
+		return;
+	}
+	currentQuestion = currentPair.question;
+	currentAnswer = currentPair.answer;
+	UIPrint(currentQuestion);
+	
+}
+
+
+//load all the files
+function init(){
+	rawSet1 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_1.txt");
+	rawSet2 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_2.txt");
+	rawSet3 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_3.txt");
+	rawSet4 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_4.txt");
+	rawSet5 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_5.txt");
+	rawSet6 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_6.txt");
+	rawSet7 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_7.txt");
+	rawSet8 = readTextFile("file:///C:/Users/Yen-hua/Desktop/Teaching/10ICT ideas/Law Programme/updatedSets/Set_8.txt");
+	
+	setQuizObjects();
+}
+  
+//file is filename
+function readTextFile(file){
+    rawFile = new XMLHttpRequest();//an object
+	console.log(file);
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function (){
+        if(rawFile.readyState === 4){
+			
+            if(rawFile.status === 200 || rawFile.status == 0){	
+                tempText = rawFile.responseText;
+            }
+        }
+    }
+
+    rawFile.send(null);
+	return tempText;
+}
+
+//Prints a string, and only a string onto the webpage
+function UIPrint(text){
+	consoleText = consoleText + (text + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+</script>
+
+
+
