@@ -1,0 +1,73 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+Basic Static Quiz
+</title>
+
+<body>
+
+<form id="q1">
+  1) What is 6+23? <input type="value" id="question1"><br>
+</form> 
+<form id="q2">
+  2) What is 6*23? <input type="value" id="question2"><br>
+</form> 
+<form id="q3">
+  3) How mant times does 6 go into 23? <input type="value" id="question3"><br>
+</form> 
+
+<p></p>
+
+<button onclick="checkQ1()">SubmitQ1</button>
+<button onclick="checkQ2()">SubmitQ2</button>
+<button onclick="checkQ3()">SubmitQ3</button>
+<p id="demo"></p>
+
+<script>
+var newQuestion = false;
+
+function checkQ1() {
+	
+    var x = document.getElementById("question1").value;
+	console.log(x);
+
+	if(x==29){
+		document.getElementById("demo").innerHTML = "You are correct!";
+	}
+	else{
+		document.getElementById("demo").innerHTML = "Wrong! You inputted " + x;
+	}
+	
+}
+function checkQ2() {
+	
+    var x = document.getElementById("question2").value;
+	console.log(x);
+
+	if(x==138){
+		document.getElementById("demo").innerHTML = "You are correct!";
+	}
+	else{
+		document.getElementById("demo").innerHTML = "Wrong! You inputted " + x;
+	}
+	
+}
+function checkQ3() {
+	
+    var x = document.getElementById("question3").value;
+	console.log(x);
+
+	if(x==3){
+		document.getElementById("demo").innerHTML = "You are correct!";
+	}
+	else{
+		document.getElementById("demo").innerHTML = "Wrong! You inputted " + x;
+	}
+	
+}
+</script>
+
+</body>
+</html>
