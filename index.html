@@ -1,239 +1,111 @@
 
 <!DOCTYPE html>
 <title>
-Cheese Trap Activity
+10ICT Home Term 2
 </title>
 <style>
-p.a {
-	font-size: 20px;
-    font-family: "Comic Sans MS";
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #ffffcc;
 }
 </style>
 
 <body>
-<p class="a">
-Arrange the pieces in the BOTTOM in the correct order in the TOP box (or to the side). </br>
-Key:</br>
-a = 4</br>
-b = 3</br>
-c = 10</br>
-</p>
-    <svg id="mySvg" width="0" height="0">
-      <defs id="mdef">
-        <pattern id="imageID" x="0" y="0" height="40" width="40">
-          <image x="0" y="0" width="40" height="40" xlink:href="https://images-na.ssl-images-amazon.com/images/I/71gI-IUNUkL._SL1500_.jpg"></image>
-        </pattern>
-		<pattern id="imageID1" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/1.png"></image>
-        </pattern>
-		<pattern id="imageID2" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/2.png"></image>
-        </pattern>
-		<pattern id="imageID3" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/3.png"></image>
-        </pattern>
-		<pattern id="imageID4" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/4.png"></image>
-        </pattern>	
-		<pattern id="imageID5" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/5.png"></image>
-        </pattern>
-		<pattern id="imageID6" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/6.png"></image>
-        </pattern>
-		<pattern id="imageID7" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/7.png"></image>
-        </pattern>
-		<pattern id="imageID8" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/8.png"></image>
-        </pattern>
-		<pattern id="imageID1" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/1.png"></image>
-        </pattern>
-		<pattern id="imageID2" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/2.png"></image>
-        </pattern>
-		<pattern id="imageID3" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/3.png"></image>
-        </pattern>
-		<pattern id="imageID4" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/4.png"></image>
-        </pattern>	
-		<pattern id="imageID5" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/5.png"></image>
-        </pattern>
-		<pattern id="imageID6" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/6.png"></image>
-        </pattern>
-		<pattern id="imageID7" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/7.png"></image>
-        </pattern>
-		<pattern id="imageID8" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/8.png"></image>
-        </pattern>
-		<pattern id="imageID9" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/9.png"></image>
-        </pattern>
-		<pattern id="imageID10" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/10.png"></image>
-        </pattern>
-		<pattern id="imageID11" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/11.png"></image>
-        </pattern>
-		<pattern id="imageID12" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/12.png"></image>
-        </pattern>	
-		<pattern id="imageID13" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/13.png"></image>
-        </pattern>
-		<pattern id="imageID14" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/14.png"></image>
-        </pattern>
-		<pattern id="imageID15" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/15.png"></image>
-        </pattern>
-		<pattern id="imageID16" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/16.png"></image>
-        </pattern>	
-		<pattern id="imageID17" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/17.png"></image>
-        </pattern>
-		<pattern id="imageID18" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/18.png"></image>
-        </pattern>
-		<pattern id="imageID19" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/19.png"></image>
-        </pattern>
-		<pattern id="imageID20" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/20.png"></image>
-        </pattern>
-		<pattern id="imageID21" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/21.png"></image>
-        </pattern>
-		<pattern id="imageID22" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/22.png"></image>
-        </pattern>
-		<pattern id="imageID23" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/23.png"></image>
-        </pattern>
-		<pattern id="imageID24" x="0" y="0" height="1" width="1">
-          <image x="20" y="20" width="112" height="112" xlink:href="images/24.png"></image>
-        </pattern>
-		<pattern id="imageID0" x="0" y="0" height="1800" width="700">
-          <image x="0" y="0" width="1800" height="700" xlink:href="images/board.png"></image>
-        </pattern>
-	</defs>
-	</svg>
+<table>
+  <tr>
+    <th>Week # (Dates Pending)</th>
+    <th>Topics/Concepts</th>
+    <th>Resources/Activities/Demos</th>
+	<th>Videos</th>
+  </tr>
+  <tr>
+    <td>Week1</td>
+    <td>Variables<br>
+	Operators/Expressions<br>
+	Assignment statements<br>
+	Number and String methods<br>
+	Functions<br>
+	Programming in JS and running in a browser<br>
+</td>
+    <td>
+		<a href="https://drive.google.com/file/d/1rp8HaI19Z-JQLd3iR70B0dLz_R8oeFgO/view?usp=sharing">Hello World Worksheet</a><br>
+		<a href="https://drive.google.com/file/d/1Y9T1zUYtpospnOYcJLzMn3cMi2TsTQqT/view?usp=sharing">Lesson01 Zip</a><br>
+		<a href="https://yenhua.github.io/Week1Demos/FootToCm.html">FootToCm</a><br>
+		<a href="https://drive.google.com/file/d/1fVSm3jVg0iLyTNubi0MQoXWLGBn6rGly/view?usp=sharing">Nametag and PaintCalc Worksheet</a><br>
+		<a href="https://drive.google.com/file/d/1MmV7xePEPTH53hCHRXexRaY6kkgjgsfx/view?usp=sharing">Lesson02 Zip</a><br>
+		<a href="https://drive.google.com/file/d/1irlJV2UCbXk6RzhyBdSZ2eBY4ze_83-0/view?usp=sharing">FlagDrawer Worksheet</a><br>
+		<a href="https://drive.google.com/file/d/1VP5ZODB8jz_IHFvXj9XtxQtErlGZVZaK/view?usp=sharing">Lesson03 Zip</a><br>
+	</td>
+	<td> <a href="https://drive.google.com/file/d/15vr5ZzQhNpqUNQMDRiWJl_npywGeqg3h/view?usp=sharing">Lesson 01 Video (Introduction, variables, assignment statements)</a><br>
+		 <a href="https://drive.google.com/open?id=1xyHDTi9L37nOzyqYLKFIx5LfnGk33SSl">Lesson 01 PowerPoint</a><br>
+		 <a href="https://drive.google.com/file/d/17x2EszPVAf2YTZ0mpLAkz6I1mESUYLHB/view?usp=sharing">Lesson 02 Video(More on number and strings)</a><br>
+		 <a href="https://drive.google.com/open?id=1Y9-l7WhyMCqvTonr73twn2vgG2MEn0au">Lesson 02 PowerPoint</a><br>
+		 <a href="https://drive.google.com/file/d/1nDQJwcejhkCLcXqPxTgIRwKQW5tHro8d/view?usp=sharing">Lesson 03 (Functions)<br>
+		 <a href="https://drive.google.com/open?id=1ES1xz2TopjNbDjReVl-CxRB3l0OV90mQ">Lesson 03 PowerPoint</a></td>
+  </tr>
+  <tr>
+    <td>Week2</td>
+    <td>Introducing Quiz Project<br>
+		Fields<br>
+		Conditions/Code Blocks/Code Formatting<br>
+		Loops<br>
+		Booleans<br>
+</td>
+    <td>RPS game<br>
+	Static Quiz Demo<br>
+		
+</td>
+<td> Lesson 04 Video (Fields, If Statements and booleans)<br>
+     Lesson 05 Video (While loops)<br>
+	 Lesson 06 Video (Introducing Quiz Project)<br></td>
+  </tr>
+  <tr>
+    <td>Week3</td>
+    <td>Objects</td>
+    <td>Activities week 3</td>
+<td> Week 3 Videos <br></td>
+  </tr>
+  <tr>
+    <td>Week4</td>
+    <td>List/Arrays<br>
+	   Literacy Exam<br>
+    <td>Activities week 4</td>
+<td> Week 4 Videos <br></td>
+  </tr>
+  
+  <tr>
+    <td>Week5</td>
+    <td>Law quiz demo</td>
+    <td>Activities week 5</td>
+<td> Week 5 Videos<br></td>
+  </tr>
 
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <tr>
+    <td>Week6</td>
+    <td>Bonus content<br>
+		Recursion<br>
+		Libraries<br>
+		Complexity<br>
+</td>
+    <td>Activities Week 6</td>
+	<td> Week 6 Videos <br></td>
+  </tr>
+</table>
+
+
 <script>
-var width = 1800,
-    height = 1000,
-    resolution = 5,//how many pixels we allow the image to shift
-    r = 78;
 
-var points = d3.range(10).map(function() {
-	//generate points for the circles
-  return {
-    x: round(Math.random() * width, resolution),
-    y: round(Math.random() * height, resolution)
-  };
-});
-
-
-var n = 25;//we have 24 images
-var imagePoints = new Array();
-for (var i = 1; i < n; i++){//indexing at 1 makes it easier to ID the image and algebra result number
-	var yCo = 720;
-	var xCo = i*115;
-	
-	if(i>8){//the original sheet has 8 per row, let's make it loop back up.
-	yCo = 600;
-	xCo = (i-8)*115
-	}
-	if(i>16){//do it again for 16-24
-	yCo = 470;
-	xCo = (i-16)*115
-	}
-	
-	var obj = {x: xCo, y: yCo, id:i};
-	imagePoints.push(obj);
-}
-    
-
-
-var drag = d3.behavior.drag()
-    .origin(function(d) { return d; })
-    .on('drag', dragged);
-
-var svg = d3.select('body').append('svg')
-    .attr('width', width)
-    .attr('height', height);
-	
-	//append base image here as well?
-	svg.append("svg:image")
-.attr('x', 50)
-.attr('y', 50)
-.attr('width', 897)
-.attr('height', 332)
-.attr("xlink:href", "images/board.png")
-
-svg.selectAll('.vertical')
-    .data(d3.range(1, width / resolution))
- // .enter().append('line')
- //draws vertical lines
-    .attr('class', 'vertical')
-    .attr('x1', function(d) { return d * resolution; })
-    .attr('y1', 0)
-    .attr('x2', function(d) { return d * resolution; })
-    .attr('y2', height);
-
-svg.selectAll('.horizontal')
-    .data(d3.range(1, height / resolution))
-  //.enter().append('line')
-  //draws horizontal lines 
-    .attr('class', 'horizontal')
-    .attr('x1', 0)
-    .attr('y1', function(d) { return d * resolution; })
-    .attr('x2', width)
-    .attr('y2', function(d) { return d * resolution; });
-	
-	//we still want them there to snap the objects into place
-
-//var circles = svg.selectAll('circle')
-//    .data(points)
-//  .enter().append('circle')
-//    .attr('cx', function(d) { return d.x; })
-//    .attr('cy', function(d) { return d.y; })
-//    .attr('r', r)
-//   .call(drag);
-	
-var circles = svg.selectAll('circle')
-    .data(imagePoints)
-  .enter().append('circle')
-    .attr('cx', function(d) { return d.x; })
-    .attr('cy', function(d) { return d.y; })
-    .attr('r', r)
-	.style("fill", "#000")
-	.style("fill", function(d){
-		var urlString = "url(#imageID" +d.id + ")";
-		console.log(urlString);
-		return urlString;})
-	//.style("fill", "url(#imageID)")//use a fill function to determine the picture URL
-    .call(drag);
-
-function dragged(d) {
-  var x = d3.event.x,
-      y = d3.event.y,
-      gridX = round(Math.max(r, Math.min(width - r, x)), resolution),
-      gridY = round(Math.max(r, Math.min(height - r, y)), resolution);
-
-  d3.select(this).attr('cx', d.x = gridX).attr('cy', d.y = gridY);
-}
-
-function round(p, n) {
-  return p % n < n / 2 ? p - (p % n) : p + n - (p % n);
-}
 
 </script>
 </body>
