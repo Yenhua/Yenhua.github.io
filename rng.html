@@ -1,0 +1,35 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+Number Generator
+</title>
+
+<body>
+
+<button onclick="gen()">Generate 3 Numbers</button>
+<p id="printSpace"></p>
+
+
+<script>
+
+function gen(){
+
+	var num1 = Math.floor(Math.random() * 6) + 1;//Random number between 1 and 6
+	var num2 = Math.floor(Math.random() * 6) + 1;
+	var num3 = Math.floor(Math.random() * 6) + 1;
+	UIPrint(num1 + " " + num2 + " " + num3);
+}
+
+
+
+var consoleText = "";
+function UIPrint(printText){
+	consoleText = consoleText + (printText + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+</script>
+
+</body>
+</html>
