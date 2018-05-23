@@ -1,0 +1,91 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+Guess the number between 1 to 100!
+</title>
+<body>
+
+<form id="frm1">
+   <input type="number" id="num" min="1" max="100"><br>
+</form> 
+<button onclick="guess()">Guess</button>
+<p id="printSpace"></p>
+</body>
+</html>
+<script>
+//10ICT Instructions
+//Currently this is a game that lets the user guesses a number between 1 and 100.
+//If they guessed correctly, it will print out that they have gussed correctly.
+//Otherwise it will print out that they're wrong.
+
+//TODO:
+//If they are wrong, it would be nice if we gave them a hint, such as the number to guess is larger or smaller than the user's guess.
+//If they are wrong, we could decrement the number of guesses they have left, so it makes it a bit more challenging (adjust the variable numberOfGuesses).
+//If they are correct, you could tell them how many tries it took to guess correctly.
+//If they are correct, you could congratulate them and restart the game, with a new number and reset the variable back to 20
+//If they are wrong, is there any other hints we could give the user that's not higher or lower?
+
+var toGuess = Math.floor(Math.random() * 100) + 1;  
+var numberOfGuesses = 20;
+
+function guess(){
+	var inputNum = document.getElementById("num").value;//the number the user inputs to guess
+	//The following is a demo to show the use of input statements
+	//you may remove this as you work on the programme
+	
+	var always = true;//now, this is a third type a variable can take, it is called a boolean. They can be true or false;
+	
+	console.log(toGuess);//this let's us see the solution in the console, but will prevent the user from seeing it!
+	
+	if(always==true){
+		//I am always executed :)
+		console.log("we have reached here when always is true");
+	}
+	if(always==false){
+		console.log("I can put anything here since nobody will ever see it!!");
+		//I am never executed because always is true :(
+	}
+	var elseExample = 2;
+	if(elseExample==4){
+		UIPrint("elseExample must be 2 at this stage!");
+	}
+	else if(elseExample==2){
+		UIPrint("We reach this line of text, since elseExample is 2.");
+	}
+	else{
+		UIPrint("This line of code will execute when elseExample is not 4 or 2. Try changing elseExample 2!");
+	}
+	
+	//less than or greater than have symbols > and <
+	if(elseExample>10){
+		UIPrint("elseExample is higher than 10!");
+	}
+	if(elseExample<5){
+		UIPrint("elseExample is lower than 5!");
+	}
+	
+	//The Examples end here. The following code is for the number guessing game:
+	//YOUR CODE HERE
+	if(inputNum==toGuess){
+		//we have guessed correctly!
+		UIPrint("Well done, you are correct!");
+	}else{
+		UIPrint("Sorry, try again...");
+	}
+}
+
+
+
+
+
+
+
+var consoleText = "";
+//Prints a string, and only a string onto the webpage
+function UIPrint(printText){
+	consoleText = consoleText + (printText + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+</script>
