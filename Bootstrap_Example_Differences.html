@@ -1,0 +1,112 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+BootStrap Example
+</title>
+
+<body>
+Page 28 of the workbook has an exercise on bootstrapping the differences of North Island and South Island Dolphin Condylobasal lengths<br>
+Here is our sample data N: [284,287,296,300,302,302,304,310,310,313,315,317,319] <br>
+Here is our sample data S: [264,265,276,277,280,282,284,284,284,284,289,289,301,251,265,270,273,273,275,276,277,278,279,281,283,285,285,285,285,287,289,291,291,292,293,302,304,271,274,279,280,280,282,285,287,287] <br>
+Press the step button to see what happens when we resample it WITH replacement and then calculating the difference:
+Note: This programme will take a few minutes to run.
+
+<p></p>
+
+<button onclick="resample()">Step</button>
+<button onclick="resample1000()">Step 1,000</button>
+
+<p id="demo"></p>
+<p id="printSpace"></p>
+<body>  </body>
+ 
+ 
+
+
+</body>
+
+</html>
+
+<script>
+var consoleText = "";
+//var sample = [0,1,2,3,4,5,6,7,8,9];
+var sampleNorth = [284,287,296,300,302,302,304,310,310,313,315,317,319];
+var sampleSouth = [264,265,276,277,280,282,284,284,284,284,289,289,301,251,265,270,273,273,275,276,277,278,279,281,283,285,285,285,285,287,289,291,291,292,293,302,304,271,274,279,280,280,282,285,287,287];
+var lowerBound = 0; //This is the 2.5 percentile for a 95% CI
+var upperBound = 0; //This is the 97.5 percentile for a 95% CI
+var diffCollection = [];
+
+
+function resample() {
+	var index = Math.floor(Math.random() * 10) + 0;//generate index between 0 and 9, makes it simple for indexing 
+	
+	var tempSampleNorth = [];
+	var tempSampleSouth = [];
+	
+	var count = 0;
+	while(count!=13){//13 items in north
+		tempSampleNorth.push(sampleNorth[index]);
+		index = Math.floor(Math.random() * 13) + 0;//generate a new number between 0 and 12.
+		count++;
+	}
+	while(count!=46){//46 items in south
+		tempSampleSouth.push(sampleSouth[index]);
+		index = Math.floor(Math.random() * 46) + 0;//generate a new number between 0 and 45.
+		count++;
+	}
+	
+	tempSampleNorth.sort();
+	tempSampleSouth.sort();
+	
+	var northMed = Quartile(tempSampleNorth,0.5);
+	var southMed = Quartile(tempSampleSouth,0.5);
+	
+	diffCollection.push(northMed-southMed);
+	lowerBound = Quartile(diffCollection,0.025);
+	upperBound = Quartile(diffCollection,0.975);
+	
+	//UIPrint("[" + tempSample + "]" + "New Median: " + currentMed + " Lower Median: " + lowerBound + " Upper Median: " + upperBound);
+	//console.log(tempSample);
+	UIPrint("Bootstrap Sample with North: [" + tempSampleNorth + "] BootStrap Sample with South: [" + tempSampleSouth+"]");
+	UIPrint("Median for Bootstrap Sample North: " + northMed + "Median for Bootstrap Sample South: " + southMed + " Difference (North minus South): " + (northMed-southMed));
+	UIPrint("Lower Difference: " + lowerBound + " Upper Difference: " + upperBound);
+}
+
+function resample1000(){
+	var count = 0;
+	while(count!=1000){
+		resample();
+		count++;
+	}
+	
+	
+
+}
+//find the percentile of an array
+//credits from https://stackoverflow.com/questions/48719873/how-to-get-median-and-quartiles-percentiles-of-an-array-in-javascript-or-php
+function Quartile(data, q) {
+  data=Array_Sort_Numbers(data);
+  var pos = ((data.length) - 1) * q;
+  var base = Math.floor(pos);
+  var rest = pos - base;
+  if( (data[base+1]!==undefined) ) {
+    return data[base] + rest * (data[base+1] - data[base]);
+  } else {
+    return data[base];
+  }
+}
+
+function Array_Sort_Numbers(inputarray){
+  return inputarray.sort(function(a, b) {
+    return a - b;
+  });
+}
+
+//Prints a string, and only a string onto the webpage
+function UIPrint(printText){
+	consoleText = consoleText + (printText + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+</script>
