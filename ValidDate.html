@@ -1,0 +1,68 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+Date checker
+</title>
+<body>
+
+<form id="frm1">
+	Enter a date in day, month and year with numbers only. <br>
+  Enter Day<input type="value" id="day"><br>
+  Enter Month <input type="value" id="month"><br>
+  Enter Year <input type="value" id="year"><br>
+
+</form> 
+<button onclick="main()">Submit</button>
+
+<p id="printSpace"></p>
+</html>
+<script>
+//You may want to look up which months has 31 days, which has 30 days, and which has 28 days
+//The hardest thing about this activity is deciding that everything is correct.
+//1)Finish the activity for all the months with 30 days.
+//2)Consider FEB, it usually have 28 days, include that checked
+//3)Sometimes FEB could be 29 days depending on the year. Include a way to check for it and keep everything else working. 
+function main(){
+	var day = document.getElementById("day").value;
+	var month = document.getElementById("month").value;
+	var year = document.getElementById("year").value;
+	
+	var valid = true;//this is a boolean
+
+	if((month==4 || month==6 || month==9 || month==11 ) && (day>30)){
+		//APRIL, JUNE, SEPTEMBER, NOVEMNER
+		valid = false;
+	}
+	//what other cases do we have? Is it easier to check for valid cases or invalid cases?
+	
+	
+	
+	
+	
+	
+	if(valid==true){
+		UIPrint("This is a valid date");
+	}
+	else{
+		UIPrint("This date is invalid");
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+var consoleText = "";
+function UIPrint(printText){
+	consoleText = consoleText + (printText + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+</script>
