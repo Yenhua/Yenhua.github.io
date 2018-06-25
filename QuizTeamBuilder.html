@@ -1,0 +1,93 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+Quiz Team Builder
+</title>
+<body>
+Enter names separated by a new line and click "build" to sort them into 2 random teams.<br>
+Could also use numbers (1,2,3,4...) instead of names and assign those numbers to each person.<br>
+<textarea rows="30" cols="50" id="names">
+Name1
+Name2
+Name3 (Delete these when you input them)
+</textarea>
+<button onclick="build()">Build</button>
+<p id="printSpace"></p>
+</body>
+</html>
+<script>
+
+var nameArray = [];
+var inputArray;
+var teamArrayOne = [];
+var teamArrayTwo = [];
+
+function build(){
+	emptyTeams();
+	var inputString = document.getElementById("names").value;//the number the user inputs to guess
+	console.log(inputString);
+	inputArray = inputString.split("\n");
+	for(var i = 0; i<inputArray.length;i++){
+		if(inputArray[i]==""){
+			//empty string, so we do nothing
+		}
+		else{
+			nameArray.push(inputArray[i]);//add it to our nameArray
+		}
+	}
+	UIPrint("Names entered " + nameArray);
+	
+	createTeams();//we have an array, let's shuffle them and build the 2 teams by splitting it in half
+}
+
+function createTeams(){
+	var randomNames = shuffle(nameArray);
+	var count = 0;
+	//teamArrayOne.push(randomNames.pop());
+	while(randomNames.length!=0){
+		if(count%2==0){//even number
+			teamArrayOne.push(randomNames.pop());
+		}
+		else{//it's an odd number so we push it into another one
+			teamArrayTwo.push(randomNames.pop());
+		}
+		count++;
+	}
+	
+	//we now have 2 teams, let's print them out.
+	UIPrint("Team ONE: " + teamArrayOne);
+	UIPrint("Team TWO: " + teamArrayTwo);
+	//console.log(teamArrayOne);
+	//console.log(teamArrayTwo);
+}
+
+function emptyTeams(){
+	nameArray = [];
+	teamArrayOne = [];
+	teamArrayTwo = [];
+}
+
+
+var consoleText = "";
+function UIPrint(printText){
+	consoleText = consoleText + (printText + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+
+/**
+ * Shuffles array in place.
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+</script>
