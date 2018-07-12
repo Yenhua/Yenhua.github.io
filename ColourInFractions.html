@@ -1,0 +1,70 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+<style>
+p.a {
+    font-size: 15px;
+}
+
+p.b {
+    font-size: large;
+}
+
+p.c {
+    font-size: 150%;
+}
+</style>
+<title>
+Quiz Team Builder
+</title>
+<body>
+Press submit to roll a numerator and denominator!
+<button onclick="generate()">Roll</button>
+<p id="printSpace" class="c"></p>
+</body>
+</html>
+<script>
+
+var numerator = [1,2,2,3,3,4];
+var denominator = [2,3,4,6,8,12];
+var inputArray;
+var teamArrayOne = [];
+var teamArrayTwo = [];
+
+function generate(){
+	clearText();
+	var numer = numerator[Math.floor(Math.random()*numerator.length)];
+	var denom = denominator[Math.floor(Math.random()*denominator.length)];
+	UIPrint(numer);
+	UIPrint("-");
+	UIPrint(denom);
+}
+
+
+
+var consoleText = "";
+function UIPrint(printText){
+	consoleText = consoleText + (printText + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+
+function clearText(){
+	consoleText = "";
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+
+/**
+ * Shuffles array in place.
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+</script>
