@@ -1,0 +1,141 @@
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<html>
+
+<title>
+m and ms
+</title>
+<body onload="main()">
+</body>
+<img src="MandMs.png"></img>
+<button onclick="generate()">Click me!</button>
+
+<p id="printSpace"></p>
+<canvas id="myCanvas" width="1000" height="1000"></canvas>
+</html>
+<script>
+var count = 0;
+var row = 1;
+var random = 0;
+var canvas;//this is actually an object, we will go into more detail later. We call methods on this objects but to make this exercise simples there'll be additional functions.
+//initialises the canvas
+function main(){
+	var c = document.getElementById("myCanvas");
+	canvas = c.getContext("2d");
+	console.log(typeof canvas);
+}
+
+
+function generate(){
+	random = Math.floor(Math.random() * 105) + 1;
+	//random between 1 and 100. 	
+	if(random<=30){//1-30 is brown
+		setFill("Brown");
+	}
+	else if(random<=50 && random >30){//31 to 50 is yellow
+		setFill("Yellow");
+	}
+	else if(random<=71 && random >50){//51 to 70 is red
+		setFill("Red");
+	}
+	else if(random<=80 && random >70){//71 to 80 is orange
+		setFill("Orange");
+	}
+	else if(random<=90 && random >80){//81 to 80 is green
+		setFill("Chartreuse");
+	}
+	else if(random<=100 && random >90){//91 to 100 is blue
+		setFill("Blue");
+	}
+	else{
+		setFill("Purple");//wonder if we will see this!
+	}
+		
+	fillCircle(40*count+100,40*row,20);
+	
+	count++;
+	if(count>9){
+		count = 0;
+		row++;
+	}
+}
+
+
+//For the following functions you can ignore the implementation. You just need to know what the input are and what the output will be
+//Set the fill colour. 
+//Requires a String as input
+function setFill(colour){
+	canvas.fillStyle = colour;
+}
+function setOutline(colour){
+	canvas.strokeStyle = colour;
+}
+//Draws a rectangular outline
+//x = y co-ord of the top left of the rectangle we wish to draw
+//y = x co-ord of the top left of the rectangle we wish to draw
+//width = width of the rectangle in pixels
+//height = height of the rectangle in pixels
+//Requires Number as input
+function drawRect(x,y,width,height){
+	canvas.rect(x,y,width,height);
+	canvas.stroke();
+}
+//Draws a colour filled rectangular shape
+function fillRect(x,y,width,height){
+	canvas.fillRect(x,y,width,height);
+}
+//Draws a Circle outline
+//x = x co-ord of the circle's center
+//y = y co-ord of the circle's center
+//radius = radius of the circle in pixels
+//Requires Number as input
+function drawCircle(x,y,radius){
+	canvas.beginPath();
+	canvas.arc(x,y,radius,0,2*Math.PI);//last 2 parameters are start and end angle of the arc. For circles they will always be a full 360 or 2PI
+	canvas.stroke();
+}
+//Draws a colour filled circle
+function fillCircle(x,y,radius){
+	canvas.beginPath();
+	canvas.arc(x,y,radius,0,2*Math.PI);
+	canvas.fill();
+}
+
+//The arc methods may help for the greenland flag
+
+//Draws a segment of a circle.
+//Hint 180 degrees is halfway of a circle
+//This function also draws it counterclockwise
+function drawArc(x,y,radius,startAngle,endAngle){
+	startAngle = startAngle*(180 / Math.PI);
+	endAngle = endAngle*(180 / Math.PI);
+	canvas.beginPath();
+	canvas.arc(x,y,radius,startAngle,endAngle);
+	canvas.stroke();
+}
+//Draws a segment of a circle that's filled.
+function fillArc(x,y,radius,startAngle,endAngle){
+	startAngle = startAngle*(180 / Math.PI);
+	endAngle = endAngle*(180 / Math.PI);
+	canvas.beginPath();
+	canvas.arc(x,y,radius,startAngle,endAngle);
+	canvas.fill();
+}
+
+//removes all drawing that's drawn
+function clearCanvas(){
+	canvas.clearRect(0, 0, Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+}
+//You may wish to print it to the webpage instead
+//Just replace console.log() with UIPrint();
+//Prints a string, and only a string onto the webpage
+var consoleText = "";
+function UIPrint(text){
+	consoleText = consoleText + (text + " <br>");
+	document.getElementById("printSpace").innerHTML = consoleText;
+}
+
+
+
+
+</script>
